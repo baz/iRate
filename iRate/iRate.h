@@ -129,6 +129,7 @@ iRateErrorCode;
 @property (nonatomic, assign) BOOL promptAtLaunch;
 @property (nonatomic, assign) BOOL verboseLogging;
 @property (nonatomic, assign) BOOL previewMode;
+@property (nonatomic, assign) BOOL eventBasedOnly;
 
 //advanced properties for implementing custom behaviour
 @property (nonatomic, strong) NSURL *ratingsURL;

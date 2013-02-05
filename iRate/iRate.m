@@ -179,6 +179,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
         self.remindPeriod = 1.0f;
         self.verboseLogging = NO;
         self.previewMode = NO;
+		self.eventBasedOnly = NO;
         
 #ifdef DEBUG
         
@@ -398,6 +399,16 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
             NSLog(@"iRate did not prompt for rating because the user has declined to rate this version");
         }
         return NO;
+    }
+    
+    //check the number of significant events
+    else if (self.eventBasedOnly && self.eventCount >= self.eventsUntilPrompt)
+    {
+        if (self.verboseLogging)
+        {
+            NSLog(@"iRate did prompt for rating because the app has been used %i times", (int)self.usesCount);
+        }
+        return YES;
     }
     
     //check for first launch
